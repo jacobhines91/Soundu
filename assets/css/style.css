@@ -1,0 +1,11 @@
+body {
+    background: url(bgex2Asset1.png) fixed;
+    background-size: cover;
+    font-size: 25px;
+   
+}
+.video {
+    border-bottom: 1px;
+  
+    margin-bottom: 200px;
+}
