@@ -8,4 +8,12 @@ body {
     border-bottom: 1px;
   
     margin-bottom: 200px;
+    margin-right: 50px;
+}
+.container-fluid {
+margin-top: 200px;
+margin-left: 20px;
+}
+.song-info {
+    text-align: center;
 }
