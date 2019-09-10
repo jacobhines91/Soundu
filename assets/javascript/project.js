@@ -94,8 +94,10 @@ function youtubeLogic()
 }
 
 //function to do stuff related to Spotify
+
 function spotifyLogic()
 {
+
 	//logic for Spotify API
 }
 // styles the search bar...still trying to figure out how to do this 
