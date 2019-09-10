@@ -73,7 +73,31 @@ database.ref().on("value", function(snapshot) {
 //  2. pulls from Spotify API the corresponding information
 //  3. pulls from Youtube API the corresponding video
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
+//attatch click event to button
+//when button is clicked the function named callerFunction will execute
+$("#searchButton").on("click", callerFunction)
 
+//function that runs when button is clicked, it only calls other functions
+function callerFunction( )
+{
+	//call function which has YouTube logic
+	youtubeLogic();
+
+    //call function which has Spotify logic
+	spotifyLogic();
+}
+
+//function to do stuff related to Spotify
+function youtubeLogic()
+{
+	//logic for YouTube API
+}
+
+//function to do stuff related to Spotify
+function spotifyLogic()
+{
+	//logic for Spotify API
+}
 // styles the search bar...still trying to figure out how to do this 
 
 
