@@ -84,7 +84,7 @@ function callerFunction( )
 	youtubeLogic();
 
     //call function which has Spotify logic
-	spotifyLogic();
+    spotifyLogic();
 
 }
 //function to do stuff related to Spotify
