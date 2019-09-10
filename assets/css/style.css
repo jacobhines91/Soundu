@@ -1,3 +1,24 @@
+
+body {
+    background: url(bgex2Asset1.png) fixed;
+    background-size: cover;
+    font-size: 25px;
+   
+}
+.video {
+    border-bottom: 1px;
+  
+    margin-bottom: 200px;
+    margin-right: 50px;
+}
+.container-fluid {
+margin-top: 200px;
+margin-left: 20px;
+}
+.song-info {
+    text-align: center;
+}
+
 .instructions {
     text-align:center;
     font-size:20px;
