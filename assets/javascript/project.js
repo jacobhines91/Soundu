@@ -1,9 +1,70 @@
-//Subscibersbox
+ //  here's the code for the modal 
+ $(document).ready(function() {
+    //Fade in delay for the background overlay (control timing here)
+    $("#bkgOverlay").delay(50).fadeIn(400);
+    //Fade in delay for the popup (control timing here)
+    $("#delayedPopup").delay(50).fadeIn(400);
+  
+    //Hide dialouge and background when the user clicks the close button
+    $("#btnClose").click(function(e) {
+      HideDialog();
+      e.preventDefault();
+    });
+  });
+  //Controls how the modal popup is closed with the close button
+  function HideDialog() {
+    $("#bkgOverlay").fadeOut(400);
+    $("#delayedPopup").fadeOut(300);
+  }
+
+ var subscribersBox;
+ var songVideoDisplay;
+ var songInfoDisplay;
+ var buttonViewDisplay;
+ var searchForm;
+ var suggestionPlaylist; 
+
+ //Subscibersbox
 //      It will collect the information and push it to Firebase
+var firebaseConfig = {
+   apiKey: "AIzaSyDlYwHyxg0A4YGrUzMk3kfvA1f_P0pwths",
+   authDomain: "soundu-252416.firebaseapp.com",
+   databaseURL: "https://soundu-252416.firebaseio.com",
+   projectId: "soundu-252416",
+   storageBucket: "soundu-252416.appspot.com",
+   messagingSenderId: "584865752117",
+   appId: "1:584865752117:web:cf0364417fde91031ebd7c"
+ };
+ //Initialize Firebase 
+ firebase.initializeApp(firebaseConfig);
 
 
 //A button that shows the updated number of subscribers that ties into Firebase:
 //      This information is pulled from Firebase
+var database = firebase.database();
+
+// Initial Values
+var email = ""; 
+$("#userSubscribe").on("click", function(event) {
+    // Don't refresh the page!
+    event.preventDefault();
+
+    // YOUR TASK!!!
+    // Code in the logic for storing and retrieving the most recent user.
+    // Don't forget to provide initial data to your Firebase database.
+    email = $("#email-input").val().trim(); 
+    database.ref().set({
+        email: email,
+    });
+
+}); 
+
+database.ref().on("value", function(snapshot) {
+    $("#subscriber-display").text(snapshot.val().name);
+    // Handle the errors
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+}); 
 
 
 
@@ -11,7 +72,9 @@
 //  1. pushes the name of the song into the database
 //  2. pulls from Spotify API the corresponding information
 //  3. pulls from Youtube API the corresponding video
-//  4. pulls suggested playlist or suggested videos from Youtube API or Spotify
+//  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
+
+// styles the search bar...still trying to figure out how to do this 
 
 
 //songVideoDisplay that pulls up must popular video related to the song pulled from You Tube API

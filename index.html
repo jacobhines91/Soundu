@@ -13,6 +13,57 @@
  </head>
 <!--JACOBS BRANCH HOPE WORKS..-->
   <body>
+  <title>Sound</title>
+
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script> 
+</head>
+
+  <body> 
+        <div id="bkgOverlay" class="backgroundOverlay"></div>
+  
+        <div id="delayedPopup" class="delayedPopupWindow">
+          <!-- This is the close button -->
+          <a href="#" id="btnClose" title="Click here to close this deal box.">[ X ]</a>
+          <!-- This is the left side of the popup for the description -->
+          <div class="formDescription">
+            <h2>Join Now! <span style="color: #40c348; font-weight: bold;"></span></h2>
+            <p>Subscribe to the Sounu family for all of your music needs!</p>
+          </div>
+          <!-- Begin MailChimp Signup Form -->
+          <div id="mc_embed_signup">
+            <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+              <div class="mc-field-group">
+                <label for="mce-FNAME">Name
+        
+                </label>
+                <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+              </div>
+        
+              <div class="mc-field-group">
+                <label for="mce-EMAIL">Email Address
+        
+                </label>
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+              </div>
+        
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>
+              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;">
+                <input type="text" name="b_2aabb98e55b83ba9d3bd551f5_e6c08b53b4" value="">
+              </div>
+              <div class="clear">
+                <input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button">
+              </div>
+            </form>
+          </div>
+          <!-- End MailChimp Signup Form -->
+        </div>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6">
@@ -20,7 +71,8 @@
 		
 			</h3>
         </div>
-        //Subscribers numbers go here
+        //Subscribers numbers go here 
+        <!-- add modul for the subscribers..make sure the id matches in javascript -->
 		<div class="col-md-6">
 		</div>
   </div>
@@ -77,6 +129,6 @@
 </div>
 
 <script	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="assets/javascript/javascript.js"></script>
+<script type="text/javascript" src="assets/javascript/project.js"></script>
 </body>
 </html>
