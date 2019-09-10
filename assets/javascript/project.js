@@ -1,9 +1,28 @@
+ //  here's the code for the modal 
+ $(document).ready(function() {
+    //Fade in delay for the background overlay (control timing here)
+    $("#bkgOverlay").delay(50).fadeIn(400);
+    //Fade in delay for the popup (control timing here)
+    $("#delayedPopup").delay(50).fadeIn(400);
+  
+    //Hide dialouge and background when the user clicks the close button
+    $("#btnClose").click(function(e) {
+      HideDialog();
+      e.preventDefault();
+    });
+  });
+  //Controls how the modal popup is closed with the close button
+  function HideDialog() {
+    $("#bkgOverlay").fadeOut(400);
+    $("#delayedPopup").fadeOut(300);
+  }
+
  var subscribersBox;
  var songVideoDisplay;
  var songInfoDisplay;
  var buttonViewDisplay;
  var searchForm;
- var suggestionPlaylist;
+ var suggestionPlaylist; 
 
  //Subscibersbox
 //      It will collect the information and push it to Firebase
@@ -25,7 +44,6 @@ var firebaseConfig = {
 var database = firebase.database();
 
 // Initial Values
-var name = "";
 var email = ""; 
 $("#userSubscribe").on("click", function(event) {
     // Don't refresh the page!
@@ -34,10 +52,8 @@ $("#userSubscribe").on("click", function(event) {
     // YOUR TASK!!!
     // Code in the logic for storing and retrieving the most recent user.
     // Don't forget to provide initial data to your Firebase database.
-    name = $("#name-input").val().trim();
     email = $("#email-input").val().trim(); 
     database.ref().set({
-        name: name,
         email: email,
     });
 
@@ -48,7 +64,8 @@ database.ref().on("value", function(snapshot) {
     // Handle the errors
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
-});
+}); 
+
 
 
 //A click function where the user enters the name of a song and the function performs the following
