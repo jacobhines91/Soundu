@@ -75,22 +75,84 @@ database.ref().on("value", function(snapshot) {
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
 //attatch click event to button
 //when button is clicked the function named callerFunction will execute
-$("#searchButton").on("click", callerFunction)
+$("#searchButton").on("click", callerFunction) 
+
+    var apiKey =
+    "AIzaSyAIoEkZKCQsiKQxcZoILrzqCmYZjFqGOzI"; 
+    var searchTerm = $(this).val();
+    // var url = searchTerm + apikey(idk the api key yet)
+
+    $.ajax({
+    url: queryURL,
+    method: "GET",
+});
+
+    var apiKey = 
+// api key goes here 
+    searchTerm = $(this).val();
+// var url = searchTerm + apikey(idk the api key yet)
+
+    $.ajax({
+    url: queryURL,
+    method: "GET",
+});
+
 
 //function that runs when button is clicked, it only calls other functions
 function callerFunction( )
 {
 	//call function which has YouTube logic
-	youtubeLogic();
+	youtubeLogic( 
+        
+    );
 
     //call function which has Spotify logic
-    spotifyLogic();
-
+    spotifyLogic( 
+   
+    );
 }
 //function to do stuff related to Spotify
 function youtubeLogic()
 {
-	//logic for YouTube API
+    // Load the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/player_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // Replace the 'ytplayer' element with an <iframe> and
+  // YouTube player after the API code downloads.
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+      height: '360',
+      width: '640',
+      videoId: 'M7lc1UVf-VE',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+  // The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+
+  // The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+      setTimeout(stopVideo, 6000);
+      done = true;
+    }
+  }
+  function stopVideo() {
+    player.stopVideo();
+  }
+    
 }
 
 //function to do stuff related to Spotify
