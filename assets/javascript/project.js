@@ -114,45 +114,74 @@ database.ref().on("value", function(snapshot) {
 //  2. pulls from Spotify API the corresponding information
 //  3. pulls from Youtube API the corresponding video
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
-//attatch click event to button
+//attatch click event to button 
+
+var art = ""; //holds information from searchbar
+var apiKey = "MsUgoduW6xEiuD5coGCaCCW7KxTq5utB";
+//var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + art + "&MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&locale=" + apiKey;
+function ticketMaster(){
+var queryURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=' + apiKey + "&keyword=" + art;
+$.ajax({
+ url: queryURL,
+ method: "GET",
+}).then(function (response) {
+ console.log(response._embedded.events);
+ console.log("Local Date: " + response._embedded.events[0].dates.start.localDate)
+ for (var i = 0; i < response._embedded.events.length; i++) {
+   var name = response._embedded.events[i].name;
+   var url = response._embedded.events[i].url;
+   var img = response._embedded.events[i].images[0].url;
+   //console.log("IMG: " + img);
+   $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="100" width="200"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>');
+   }
+});
+}
+ticketMaster();
 //when button is clicked the function named callerFunction will execute
-$("#searchButton").on("click", callerFunction) 
+// $("#searchButton").on("click", callerFunction) 
 
-    var apiKey =
-    "AIzaSyAIoEkZKCQsiKQxcZoILrzqCmYZjFqGOzI"; 
-    var searchTerm = $(this).val();
-    // var url = searchTerm + apikey(idk the api key yet)
+//     var apiKey =
+//     "AIzaSyAIoEkZKCQsiKQxcZoILrzqCmYZjFqGOzI"; 
+//     var searchTerm = $(this).val();
+//     var url = searchTerm + apikey;
 
-    $.ajax({
-    url: queryURL,
-    method: "GET",
-});
+//     $.ajax({
+//     url: queryURL,
+//     method: "GET",
+// });
 
-    var apiKey = 
-// api key goes here 
-    searchTerm = $(this).val();
-// var url = searchTerm + apikey(idk the api key yet)
+//     var apiKey = 
+// // api key goes here 
+//     searchTerm = $(this).val();
+// // var url = searchTerm + apikey(idk the api key yet)
 
-    $.ajax({
-    url: queryURL,
-    method: "GET",
-});
+//     $.ajax({
+//     url: queryURL,
+//     method: "GET",
+// });
 
 
 //function that runs when button is clicked, it only calls other functions
 function callerFunction( )
 {
 	//call function which has YouTube logic
-	youtubeLogic(  
-    
-        
-    );
+  youtubeLogic();
+ // spotifyLogic(input)
 
+
+  }
+ function spotifyLogic(){
     //call function which has Spotify logic
-    spotifyLogic( 
-   
+    //spotifyLogic(){
+      
+      $.ajax({
+        method: "GET",
+        url: `https://api.spotify.com/v1/search?q=track:antarctica&type=track&album`
+      }).done(function(data) {
+        console.log(data);
+      }
     );
-}
+    }
 //function to do stuff related to Spotify
 function youtubeLogic()
 {
@@ -197,13 +226,6 @@ function youtubeLogic()
     
 }
 
-//function to do stuff related to Spotify
-
-function spotifyLogic()
-{
-
-	//logic for Spotify API
-}
 // styles the search bar...still trying to figure out how to do this 
 
 
@@ -214,7 +236,20 @@ function spotifyLogic()
             //Items to be displayed: 1. Name of the Artist 2. Release Date 3. Popularity 4. Genre 5. Album Type
 
 //buttonViewDisplay shows the last ten searches that was entered by users
-
+$(function(){
+  populateButtons(topics, 'searchform', '#buttonview');
+})
+var topics = ["Sade", "Adele", "Alicia Keys", "NF", "John Legend", "Billie Eilish"];
+function populateButtons(topics, classToAdd, areaToAddTo){
+  $(areaToAddTo).empty();
+  for(var i = 0; i < topics.length; i++){
+      var a = $('<button>');
+      a.addClass(classToAdd);
+      a.attr('data-type', topics[i]);
+      a.text(topics[i]);
+      $(areaToAddTo).append(a);
+  }
+}
 //SuggestionPlaylist/Video from the Spotify or Youtube API
             //Based on the song name entered by the user this will display either the name of four songs they shoud try or four videos they should look at
 
