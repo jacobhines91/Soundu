@@ -57,31 +57,22 @@
     player.stopVideo();
   }
 
- var subscribersBox;
+ var subscribersBox = "";
  var songVideoDisplay;
  var songInfoDisplay;
  var buttonViewDisplay;
- var searchForm;
+ var searchTerm = "";
  var suggestionPlaylist; 
 
  //Subscibersbox
 //      It will collect the information and push it to Firebase
-var firebaseConfig = {
-   apiKey: "AIzaSyDlYwHyxg0A4YGrUzMk3kfvA1f_P0pwths",
-   authDomain: "soundu-252416.firebaseapp.com",
-   databaseURL: "https://soundu-252416.firebaseio.com",
-   projectId: "soundu-252416",
-   storageBucket: "soundu-252416.appspot.com",
-   messagingSenderId: "584865752117",
-   appId: "1:584865752117:web:cf0364417fde91031ebd7c"
- };
  //Initialize Firebase 
- firebase.initializeApp(firebaseConfig);
+ 
 
 
 //A button that shows the updated number of subscribers that ties into Firebase:
 //      This information is pulled from Firebase
-var database = firebase.database();
+
 
 // Initial Values
 var email = ""; 
@@ -99,19 +90,18 @@ $("#userSubscribe").on("click", function(event) {
 
 }); 
 
-database.ref().on("value", function(snapshot) {
-    $("#subscriber-display").text(snapshot.val().name);
-    // Handle the errors
-}, function(errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-}); 
+// database.ref().on("value", function(snapshot) {
+//     $("#subscriber-display").text(snapshot.val().subscribersBox);
+//     // Handle the errors
+// }, function(errorObject) {
+//     console.log("Errors handled: " + errorObject.code);
+// }); 
 
 
 
 
 //A click function where the user enters the name of a song and the function performs the following
 //  1. pushes the name of the song into the database
-//  2. pulls from Spotify API the corresponding information
 //  3. pulls from Youtube API the corresponding video
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
 //attatch click event to button 
@@ -136,19 +126,43 @@ $.ajax({
    }
 });
 }
-ticketMaster();
+ticketMaster(); 
+
+// everything to call the news api for artists
+var art = ""; //holds information from searchbar
+var url = 'https://newsapi.org/v2/everything?' +
+         //   'q&'+ art +
+         'q=' + art + '&'+
+         'from=2019-01-00&' +
+         'sortBy=popularity&' +
+         'apiKey=9882a349dd104bddae19e83cec0b94e4';
+var req = new Request(url);
+fetch(req)
+   .then(function(response) {
+       console.log(response.json());
+   })
 //when button is clicked the function named callerFunction will execute
-// $("#searchButton").on("click", callerFunction) 
+$(function() {
+  $("form").on("submit", function(e) {
+    e.preventDefault();
+    // prepare the request
+    var request = gapi.client.youtube.search.list({
+      part: "snippet",
+      type: "video",
+      q: encodeURIComponent($("search").val()).replace(/%20/g, "+"),
+      maxResults: 3, 
+      order: "viewCount", 
+    });
+    // execute the request
+    request.execute(function(response) {
+      var results = response.result;
+      $.each(results.items, function(index, item) {
+        console.log(item);
+      });
+    });
+  });
+});
 
-//     var apiKey =
-//     "AIzaSyAIoEkZKCQsiKQxcZoILrzqCmYZjFqGOzI"; 
-//     var searchTerm = $(this).val();
-//     var url = searchTerm + apikey;
-
-//     $.ajax({
-//     url: queryURL,
-//     method: "GET",
-// });
 
 //     var apiKey = 
 // // api key goes here 
@@ -251,5 +265,4 @@ function populateButtons(topics, classToAdd, areaToAddTo){
   }
 }
 //SuggestionPlaylist/Video from the Spotify or Youtube API
-            //Based on the song name entered by the user this will display either the name of four songs they shoud try or four videos they should look at
-
+//Based on the song name entered by the user this will display either the name of four songs they shoud try or four videos they should look at
