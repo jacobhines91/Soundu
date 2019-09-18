@@ -85,15 +85,6 @@ $(document).ready(function() {
  var searchTerm = "";
  var suggestionPlaylist; 
 
- //Subscibersbox
-//      It will collect the information and push it to Firebase
- //Initialize Firebase 
- 
-
-
-//A button that shows the updated number of subscribers that ties into Firebase:
-//      This information is pulled from Firebase
-
 
 // Initial Values
 var email = ""; 
@@ -110,14 +101,6 @@ $("#userSubscribe").on("click", function(event) {
     });
 
 }); 
-
-// database.ref().on("value", function(snapshot) {
-//     $("#subscriber-display").text(snapshot.val().subscribersBox);
-//     // Handle the errors
-// }, function(errorObject) {
-//     console.log("Errors handled: " + errorObject.code);
-// }); 
-
 
 
 
@@ -138,10 +121,15 @@ $.ajax({
 }).then(function (response) {
  console.log(response._embedded.events);
  console.log("Local Date: " + response._embedded.events[0].dates.start.localDate)
+ cardGroup = $("<div>");
+        cardGroup.addClass("card-group");
+        cardGroup.attr("id", "group");
+        $("#event-space").prepend(cardGroup); 
  for (var i = 0; i < response._embedded.events.length; i++) {
    var name = response._embedded.events[i].name;
    var url = response._embedded.events[i].url;
    var img = response._embedded.events[i].images[0].url;
+
    //console.log("IMG: " + img);
    $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
   }

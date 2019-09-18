@@ -141,7 +141,8 @@ body {
       cursor: pointer;
   }
 
-
-
+  #attraction-panel {
+    display:none;
+  }
 
   
