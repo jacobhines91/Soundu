@@ -1,38 +1,21 @@
 
-
 body {
-    background: url(F_background_1.png) fixed;
+    background: url(bg_F.png) fixed;
     background-size: cover;
     font-size: 25px;
-   
-}
-.img-fluid {
-    background: url("LOGO_02Asset26.png")
+    color: white;
 }
 
 
-.navbar-brand {
-background: url(LOGO_01Asset25.png);
-}
+
+
+
 #delayedPopup{
-    background: url(login_card22Asset18.png)
-}
-#backgroundOverlay {
-    transition: 3s, color 2s;
-
-  }
-
-.video {
-    border-bottom: 1px;
-  
-    margin-bottom: 200px;
-    margin-right: 50px;
+    background: url(login_card22Asset18.png);
 }
 
-.container-fluid {
-margin-top: 200px;
-margin-left: 20px;
-}
+
+
 .song-info {
     text-align: center;
 }
@@ -157,3 +140,8 @@ margin-left: 20px;
       box-shadow:none!important;
       cursor: pointer;
   }
+
+
+
+
+  
