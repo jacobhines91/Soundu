@@ -1,22 +1,20 @@
-//  here's the code for the modal 
- $(document).ready(function() {
-    //Fade in delay for the background overlay (control timing here)
-    $("#bkgOverlay").delay(50).fadeIn(400);
-    //Fade in delay for the popup (control timing here)
-    $("#delayedPopup").delay(50).fadeIn(400);
-  
-    //Hide dialouge and background when the user clicks the close button
-    $("#btnClose").click(function(e) {
-      HideDialog();
-      e.preventDefault();
-    });
-  });
-  //Controls how the modal popup is closed with the close button
-  function HideDialog() {
-    $("#bkgOverlay").fadeOut(400);
-    $("#delayedPopup").fadeOut(300);
-  } 
+$(document).ready(function() {
+  //Fade in delay for the background overlay (control timing here)
+  $("#bkgOverlay").delay(500).fadeIn(800);
+  //Fade in delay for the popup (control timing here)
+  $("#delayedPopup").delay(500).fadeIn(800);
 
+  //Hide dialouge and background when the user clicks the close button
+  $("#btnClose").click(function(e) {
+    HideDialog();
+    e.preventDefault();
+  });
+});
+//Controls how the modal popup is closed with the close button
+function HideDialog() {
+  $("#bkgOverlay").fadeOut(400);
+  $("#delayedPopup").fadeOut(300);
+} 
   var tag = document.createElement('script');
 
   function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
@@ -28,7 +26,7 @@ $(function() {
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+            q: encodeURIComponent($("#search" + "music video").val()).replace(/%20/g, "+"),
             maxResults: 1,
             order: "viewCount",
             publishedAfter: "2015-01-01T00:00:00Z"
