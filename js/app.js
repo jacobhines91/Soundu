@@ -128,7 +128,6 @@ $("#userSubscribe").on("click", function(event) {
 //attatch click event to button 
 
 var art = "lizzo"; //holds information from searchbar
-var groupNumber = 0;
 var apiKey = "MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&areas=5";
 //var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + art + "&MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&locale=" + apiKey;
 function ticketMaster(){
@@ -148,9 +147,8 @@ $.ajax({
    cardDiv.addClass("card col-md-3");
    newP = $("<p>");
    cardDiv.append(newP);
-   $("#group"+groupNumber).prepend(cardDiv);
    //console.log("IMG: " + img);
-   $("#tEvents" + art).append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
+   $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
   }
   groupNumber++;
 });
