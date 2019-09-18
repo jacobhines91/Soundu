@@ -127,8 +127,8 @@ $("#userSubscribe").on("click", function(event) {
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
 //attatch click event to button 
 
-var art = ""; //holds information from searchbar
-var apiKey = "MsUgoduW6xEiuD5coGCaCCW7KxTq5utB";
+var art = "lizzo"; //holds information from searchbar
+var apiKey = "MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&areas=5";
 //var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + art + "&MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&locale=" + apiKey;
 function ticketMaster(){
 var queryURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=' + apiKey + "&keyword=" + art;
