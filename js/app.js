@@ -142,15 +142,9 @@ $.ajax({
    var name = response._embedded.events[i].name;
    var url = response._embedded.events[i].url;
    var img = response._embedded.events[i].images[0].url;
-   
-   cardDiv = $("<div>");
-   cardDiv.addClass("card col-md-3");
-   newP = $("<p>");
-   cardDiv.append(newP);
    //console.log("IMG: " + img);
    $("#tEvents").append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
   }
-  groupNumber++;
 });
 }
 ticketMaster(); 
