@@ -26,7 +26,7 @@ $(function() {
        var request = gapi.client.youtube.search.list({
             part: "snippet",
             type: "video",
-            q: encodeURIComponent($("#search" + "music video").val()).replace(/%20/g, "+"),
+            q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
             maxResults: 1,
             order: "viewCount",
             publishedAfter: "2015-01-01T00:00:00Z"
