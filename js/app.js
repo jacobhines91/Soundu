@@ -1,20 +1,4 @@
-$(document).ready(function() {
-  //Fade in delay for the background overlay (control timing here)
-  $("#bkgOverlay").delay(500).fadeIn(800);
-  //Fade in delay for the popup (control timing here)
-  $("#delayedPopup").delay(500).fadeIn(800);
 
-  //Hide dialouge and background when the user clicks the close button
-  $("#btnClose").click(function(e) {
-    HideDialog();
-    e.preventDefault();
-  });
-});
-//Controls how the modal popup is closed with the close button
-function HideDialog() {
-  $("#bkgOverlay").fadeOut(400);
-  $("#delayedPopup").fadeOut(300);
-} 
   var tag = document.createElement('script');
 
   function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
@@ -59,22 +43,22 @@ function init() {
 }
 
 $(document).ready(function() {
-    //Fade in delay for the background overlay (control timing here)
-    $("#bkgOverlay").delay(800).fadeIn(1800);
-    //Fade in delay for the popup (control timing here)
-    $("#delayedPopup").delay(800).fadeIn(1800);
-  
-    //Hide dialouge and background when the user clicks the close button
-    $("#btnClose").click(function(e) {
-      HideDialog();
-      e.preventDefault();
-    });
+  //Fade in delay for the background overlay (control timing here)
+  $("#bkgOverlay").delay(500).fadeIn(800);
+  //Fade in delay for the popup (control timing here)
+  $("#delayedPopup").delay(500).fadeIn(800);
+
+  //Hide dialouge and background when the user clicks the close button
+  $("#btnClose").click(function(e) {
+    HideDialog();
+    e.preventDefault();
   });
-  //Controls how the modal popup is closed with the close button
-  function HideDialog() {
-    $("#bkgOverlay").fadeOut(400);
-    $("#delayedPopup").fadeOut(300);
-  } 
+});
+//Controls how the modal popup is closed with the close button
+function HideDialog() {
+  $("#bkgOverlay").fadeOut(400);
+  $("#delayedPopup").fadeOut(300);
+} 
     
 
  var subscribersBox = "";
