@@ -30,7 +30,7 @@
               type: "video",
               q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
               maxResults: 1,
-              order: "viewCount" + "music",
+              order: "viewCount",
               publishedAfter: "2004-01-01T00:00:00Z"
          }); 
          // execute the request
