@@ -127,7 +127,7 @@ $("#userSubscribe").on("click", function(event) {
 //  4. pulls suggested playlist or suggested videos from Youtube API or Spotify 
 //attatch click event to button 
 
-var art2 = "lizzo"; //holds information from searchbar
+var art = "lizzo"; //holds information from searchbar
 var groupNumber = 0;
 var apiKey = "MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&areas=5";
 //var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=" + art + "&MsUgoduW6xEiuD5coGCaCCW7KxTq5utB&locale=" + apiKey;
@@ -148,8 +148,9 @@ $.ajax({
    cardDiv.addClass("card col-md-3");
    newP = $("<p>");
    cardDiv.append(newP);
+   $("#group"+groupNumber).prepend(cardDiv);
    //console.log("IMG: " + img);
-   $("#tEvents", art2).append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
+   $("#tEvents" + art).append('<img src="' + img + '" alt="' + name + '" height="300" width="300"><br /><a target="_blank" href="' + url + '">' + name + '</a><br/>'); 
   }
   groupNumber++;
 });
