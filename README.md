@@ -10,7 +10,7 @@
 	viewed video, tour dates, and latest news of said artist as well.</li>
 <li>Populate/suggest other artists that are similar in genre to the artist that is being searched.</li>
 	
-</ br>
+
 <p>Scope</p>
 </ br>
 <p>The primary goal of the project is to design and build an application that pulls from the Spo and Youtube API to populate information onto the Soundu service. Videos, information and other suggested artists based on genre will be displayed on the page.</p>
